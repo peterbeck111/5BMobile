@@ -62,6 +62,7 @@ module.exports = {
       oracleClientSecret: process.env.ORACLE_CLIENT_SECRET,
       oracleScope: process.env.ORACLE_SCOPE,
       oracleApiBaseUrl: process.env.ORACLE_CUSTOM_API_BASE_URL,
+      proxyUrl: process.env.PROXY_URL,
     },
   },
 };

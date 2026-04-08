@@ -11,8 +11,8 @@ const API_BASE_URL: string = extra.oracleApiBaseUrl ?? '';
 
 const INVENTORY_ENDPOINT = `${API_BASE_URL}/5below.inventory/getInventory`;
 
-// On web, use the local proxy to avoid CORS issues
-const PROXY_URL = 'http://localhost:3001/api/inventory';
+// On web, use the proxy to avoid CORS issues (configurable via env var for deployment)
+const PROXY_URL = extra.proxyUrl ?? 'http://localhost:3001/api/inventory';
 
 interface ApiTransfer {
   loc: number;
