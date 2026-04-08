@@ -79,12 +79,23 @@ async function getAccessToken(): Promise<string> {
 
 async function fetchFromApi(): Promise<ApiTransfer[]> {
   if (Platform.OS === 'web') {
-    // Use local proxy to bypass CORS
-    const response = await fetch(PROXY_URL);
-    if (!response.ok) {
-      throw new Error(`Proxy request failed: ${response.status}`);
+    // Use proxy to bypass CORS
+    console.log('[FETCH] Calling proxy:', PROXY_URL);
+    try {
+      const response = await fetch(PROXY_URL);
+      console.log('[FETCH] Proxy response status:', response.status, response.statusText);
+      if (!response.ok) {
+        const body = await response.text();
+        console.error('[FETCH] Proxy error body:', body);
+        throw new Error(`Proxy request failed: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log('[FETCH] Success, got', Array.isArray(data) ? data.length : '?', 'records');
+      return data;
+    } catch (err: any) {
+      console.error('[FETCH] Proxy fetch failed:', err.message);
+      throw err;
     }
-    return response.json();
   }
 
   // Native: call Oracle API directly
