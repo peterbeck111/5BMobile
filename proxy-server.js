@@ -59,7 +59,8 @@ app.get('/api/inventory', async (req, res) => {
 });
 
 const PORT = 3001;
-app.listen(PORT, () => {
-  console.log(`Proxy server running on http://localhost:${PORT}`);
-  console.log(`Inventory endpoint: http://localhost:${PORT}/api/inventory`);
+const HOST = '0.0.0.0';
+app.listen(PORT, HOST, () => {
+  console.log(`Proxy server running on http://${HOST}:${PORT}`);
+  console.log(`Inventory endpoint: http://${HOST}:${PORT}/api/inventory`);
 });
