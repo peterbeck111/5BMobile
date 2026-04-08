@@ -14,6 +14,16 @@ const INVENTORY_ENDPOINT = `${API_BASE_URL}/5below.inventory/getInventory`;
 // On web, use the proxy to avoid CORS issues (configurable via env var for deployment)
 const PROXY_URL = extra.proxyUrl ?? 'http://localhost:3001/api/inventory';
 
+// Debug: log resolved config values
+console.log('--- inventoryApi Config ---');
+console.log('Platform:', Platform.OS);
+console.log('extra.proxyUrl:', extra.proxyUrl ?? '(NOT SET - using default)');
+console.log('PROXY_URL:', PROXY_URL);
+console.log('API_BASE_URL:', API_BASE_URL || '(NOT SET)');
+console.log('INVENTORY_ENDPOINT:', INVENTORY_ENDPOINT);
+console.log('TOKEN_URL:', TOKEN_URL || '(NOT SET)');
+console.log('---------------------------');
+
 interface ApiTransfer {
   loc: number;
   est_arr_date: string | null;
