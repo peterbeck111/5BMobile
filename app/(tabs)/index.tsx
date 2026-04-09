@@ -52,7 +52,7 @@ type ViewMode = 'map' | 'list';
 export default function InventoryScreen() {
   const isWeb = Platform.OS === 'web';
   const { watchlist } = useWatchlist();
-  const [viewMode, setViewMode] = useState<ViewMode>('map');
+  const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [selectedStore, setSelectedStore] = useState<Store | null>(null);
   const [selectedProductId, setSelectedProductId] = useState<string | null>('5');
   const [dropdownOpen, setDropdownOpen] = useState(false);
